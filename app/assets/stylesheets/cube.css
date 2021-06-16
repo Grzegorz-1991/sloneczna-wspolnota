@@ -51,7 +51,7 @@
 }
 
 
-.shadow {
+.shadow_own {
     content: '';
     display: inline-block;
     background: #797979;

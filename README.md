@@ -2,3 +2,11 @@ Aplikacja słoneczne wspólnota służy do obsługi wspólnoty mieszkaniowej - z
 
 1. Możliwość kontroli wspólnoty z poziomu administracji
     - dodawanie nowych mieszkańców
+
+
+
+
+
+
+Dodano:
+ - model appartment oraz połączenie do bootstrap

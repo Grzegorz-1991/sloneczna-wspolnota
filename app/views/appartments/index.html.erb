@@ -1,0 +1,40 @@
+<div class="container-flex ml-5 mt-5">
+    <h1>Lista mieszkań</h1>
+
+    <%= form_tag(appartments_path, method: :get) do %>
+        <%= select_tag(:search, options_for_select(["Tęczowy","Sloneczny"], params[:search]), class:"default") %>
+        <%= submit_tag ("Pokaż") %>
+    <% end %>
+
+    <%= link_to 'Nowy', new_appartment_path, class:'btn btn-outline-info' %>
+
+    <% if @blok == nil %>
+        <%=  'Wszystkie bloki' %>
+    <% else %>
+        <h2>Blok: <%= @blok %> </h2>
+    <% end %>
+    
+    <table class="table table-dark table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Mieszkanie</th>
+                <th scope="col">Blok</th>
+                <th scope="col">Last</th>
+                <th scope="col">Funkcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @appartment.each do |appartment| %>
+            <tr>
+                <th scope="row"><%= appartment.number_of_appart %></th>
+                <td><%= appartment.block_name %></td>
+                <td><%= link_to "Idź",appartment_path(appartment.id) %></td>
+                <td>          
+                <%= link_to "Usuń", appartment_path(appartment), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Na pewno usunąć?"}  %>
+                <%= link_to 'Edytuj', edit_appartment_path(appartment), class:'btn btn-outline-info' %>
+                </td>                    
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
