@@ -1,6 +1,23 @@
 <div class="container">
-    <h1>Tutaj będzie szał</h1>
-    
-    <%= @appartment.number_of_appart %>
-    <%= @appartment.block_name %>
+    <div class="row row-all-view justify-content-center align-items-center">
+        <div class="col-10">
+            <div class="card">
+            <div class="row card-header ml-0 mr-0">
+                <div class="col">
+                <h2 class="header-2 text-center">Mieszkanie numer <%= @appartment.number_of_appart %></h2>
+                </div>
+                <div class="col">
+                <h2 class="header-2 text-center">Blok <%= @appartment.block_name %></h2>
+                </div>
+            </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Mieszkańcy</li>
+                        <li class="list-group-item">Opłaty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+

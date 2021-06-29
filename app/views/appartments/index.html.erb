@@ -1,40 +1,63 @@
-<div class="container-flex ml-5 mt-5">
-    <h1>Lista mieszkań</h1>
+<div class="container">
+    <div class="justify-content-center">
+        <div class="row mb-2">
+            <div class="col-6 d-inline-flex mt-5 ml-5">
+                <h2 class="header-2 mr-3">Lista mieszkań: </h2>
+                <div>
+                    <% if @blok == nil %>
+                        <h2 class="header-2"><%= 'Wszystkie bloki' %></h2>
+                    <% else %>
+                        <h2 class="header-2">Blok <%= @blok %> </h2>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-5 d-inline-flex justify-content-end align-items-center mt-5">
+                <%= form_tag(appartments_path, method: :get) do %>
+                <div class="row mr-4">
+                    <div class="col-9">
+                        <%= select_tag(:search, options_for_select(["Tęczowy","Sloneczny"], params[:search]), class:"form-control") %>
+                    </div>
+                    <div class="col p-0">
+                        <%= submit_tag ("Pokaż"),class:'btn btn-outline-info' %>
+                    </div>
+                </div>
+                <% end %>
+                <%= link_to 'Nowy', new_appartment_path, class:'btn btn-outline-success' %>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <table class="table table-dark table-borderless ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mieszkanie</th>
+                            <th scope="col">Blok</th>
+                            <th scope="col">Szczegóły</th>
+                            <th scope="col">Funkcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% @appartment.each do |appartment| %>
+                        <tr>
+                            <th scope="row"><%= appartment.number_of_appart %></th>
+                            <td><%= appartment.block_name %></td>
+                            <td><%= link_to appartment_path(appartment.id) do %>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#9BF6FF" class="bi bi-info-square" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            <% end %></td>
+                            <td>          
+                            <%= link_to "Usuń", appartment_path(appartment), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Na pewno usunąć?"}  %>
+                            <%= link_to 'Edytuj', edit_appartment_path(appartment), class:'btn btn-outline-info' %>
+                            </td>                    
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <%= form_tag(appartments_path, method: :get) do %>
-        <%= select_tag(:search, options_for_select(["Tęczowy","Sloneczny"], params[:search]), class:"default") %>
-        <%= submit_tag ("Pokaż") %>
-    <% end %>
-
-    <%= link_to 'Nowy', new_appartment_path, class:'btn btn-outline-info' %>
-
-    <% if @blok == nil %>
-        <%=  'Wszystkie bloki' %>
-    <% else %>
-        <h2>Blok: <%= @blok %> </h2>
-    <% end %>
-    
-    <table class="table table-dark table-borderless">
-        <thead>
-            <tr>
-                <th scope="col">Mieszkanie</th>
-                <th scope="col">Blok</th>
-                <th scope="col">Last</th>
-                <th scope="col">Funkcje</th>
-            </tr>
-        </thead>
-        <tbody>
-        <% @appartment.each do |appartment| %>
-            <tr>
-                <th scope="row"><%= appartment.number_of_appart %></th>
-                <td><%= appartment.block_name %></td>
-                <td><%= link_to "Idź",appartment_path(appartment.id) %></td>
-                <td>          
-                <%= link_to "Usuń", appartment_path(appartment), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Na pewno usunąć?"}  %>
-                <%= link_to 'Edytuj', edit_appartment_path(appartment), class:'btn btn-outline-info' %>
-                </td>                    
-            </tr>
-        <% end %>
-        </tbody>
-    </table>
+                
+    </div>
 </div>

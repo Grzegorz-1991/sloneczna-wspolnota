@@ -18,6 +18,7 @@ class AppartmentsController < ApplicationController
         @appartment = Appartment.new(appartment_params)
 
         if @appartment.save
+            flash[:notice] = "Dodano poprawnie mieszkanie"
             redirect_to @appartment
 
         else
@@ -36,7 +37,7 @@ class AppartmentsController < ApplicationController
     def update
     
         if @appartment.update(appartment_params)
-            
+            flash[:notice] = "Poprawnie edytowano mieszkanie"
             redirect_to @appartment
         else
             render 'edit'
