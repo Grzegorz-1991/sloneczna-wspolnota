@@ -43,10 +43,15 @@ class AppartmentsController < ApplicationController
             render 'edit'
         end
     end
+
+    def add_occupant
+        @appartment = Appartment.all
+    end
+
     private
 
     def appartment_params
-        params.require(:appartment).permit(:block_name,:number_of_appart,:appartment_id,:search)
+        params.require(:appartment).permit(:block_name,:number_of_appart,:appartment_id,:search,user_ids: [])
     end
 
     def set_appartment

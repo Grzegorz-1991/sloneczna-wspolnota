@@ -12,6 +12,7 @@
   <body>
     <%= render 'layouts/nav' %>
     <%= render 'layouts/messages' %>
+    <%= render 'layouts/login_logout' unless @disable_badge %>
     <%= yield %>
   </body>
 </html>

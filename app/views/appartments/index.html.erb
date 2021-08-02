@@ -15,7 +15,7 @@
                 <%= form_tag(appartments_path, method: :get) do %>
                 <div class="row mr-4">
                     <div class="col-9">
-                        <%= select_tag(:search, options_for_select(["Tęczowy","Sloneczny"], params[:search]), class:"form-control") %>
+                        <%= select_tag(:search, options_for_select(["Tęczowy","Słoneczny","Chmurkowy"], params[:search]), class:"form-control") %>
                     </div>
                     <div class="col p-0">
                         <%= submit_tag ("Pokaż"),class:'btn btn-outline-info' %>

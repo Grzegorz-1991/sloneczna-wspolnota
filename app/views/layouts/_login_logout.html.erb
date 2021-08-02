@@ -1,0 +1,7 @@
+<% if current_user == nil %>
+    <span class="badge badge-dark mr-3 mt-3"><%= "Niezalogowano" %></span>
+<% else %>
+    <span class="badge badge-info mr-3 mt-3">
+    <%= current_user.try(:admin?) ? "Administrator" : "#{current_user.name} #{current_user.surname}" %>
+    </span>
+<% end %>

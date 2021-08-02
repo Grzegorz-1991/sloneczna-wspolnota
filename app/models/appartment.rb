@@ -1,4 +1,5 @@
 class Appartment < ApplicationRecord
+    has_many :user
     def self.search(search)
         if search
             blok = Appartment.where(block_name: search)

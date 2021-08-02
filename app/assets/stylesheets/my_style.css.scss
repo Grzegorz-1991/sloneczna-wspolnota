@@ -1,8 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap';
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
 body {
-    display: flex;
-    flex-direction: row;
     height: 100vh;
     background-color: #F9C74F;
     margin: 0;
@@ -40,6 +38,7 @@ nav a:nth-of-type(4){
 
 nav a:hover {
     background-color: #BDB2FF;
+    transition: 0.1s;
 }
 
 #section-cube {
@@ -84,6 +83,38 @@ nav a:hover {
     font-size: 2em;
 }
 
+.header-2-link {
+    color: #264653;
+    text-decoration: none;
+}
+.header-2-link:hover {
+    color: #264653;
+    text-decoration: none;
+    background-color: #BDB2FF;
+    padding: 0.5%;
+    border-radius: 5px;
+    transition: 0.1s;
+}
+.header-3 {
+    color: #264653;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.header-3-no-hover {
+    color: #264653;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.header-3:hover {
+    background-color: #BDB2FF;
+    padding: 0.5%;
+    border-radius: 5px;
+    transition: 0.1s;
+    
+}
+
 .table td, .table th {
     text-align: center;
 }
@@ -101,4 +132,26 @@ nav a:hover {
     height: 7vh;
     position: fixed;
     top: 0;
+}
+
+.list-appartmen {
+    text-decoration: none;
+    color: #264653;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+}
+.list-appartmen:hover {
+    color: black;
+    text-decoration: none;
+    background-color: #BDB2FF;
+    padding: 0.5%;
+    border-radius: 5px;
+    transition: 0.1s;
+}
+
+.badge {
+    float: right;
+    font-size: 1.5em;
+    height: 40px;
 }

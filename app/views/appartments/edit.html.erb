@@ -9,9 +9,13 @@
                     <div class="col-6">
                         <%= form_with(model: @appartment, url: appartment_path,  class: "shadow p-3 mb-3 bg-secondary rounded", local: true)  do |f| %>
                             <%= f.label :Blok, class: "col-12 col-form-label text-light" %>
-                            <%= f.select(:block_name, options_for_select(["Tęczowy","Sloneczny"],@appartment.block_name), {}, class:"form-control col-12 mb-3",:selected => params[:block_name]) %>
+                            <%= f.select(:block_name, options_for_select(["Tęczowy","Słoneczny","Chmurkowy"],@appartment.block_name), {}, class:"form-control col-12 mb-3",:selected => params[:block_name]) %>
                             <%= f.label :numer_mieszkania, class: "col-12 col-form-label text-light" %>
                             <%= f.text_field :number_of_appart, class: "form-control shadow rounded col-12 mb-3", placeholder: "Numer mieszkania" %>
+                            
+                            <%= f.collection_select(:user_ids, User.all.where(appartment_id: nil), :id, :name_with_initial,
+                                {prompt: "Wybierz osoby do dodania"}, {multiple: true, size: 3, class: "custom-select shadow rounded"}) %>
+
                             <%= f.submit 'Edytuj', class:'btn btn-outline-success' %>
                         <% end %>
                     </div>

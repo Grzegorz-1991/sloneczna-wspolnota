@@ -1,0 +1,56 @@
+<div class="container ">
+<div class="row row-all-view justify-content-center align-items-center">
+<div class="col-6 text-center">
+
+<h2 class="header-2">Nowy mieszkaniec</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "shadow p-3 mb-3 bg-secondary rounded"}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  
+  <div class="field">
+    <%= f.label :imię, class: "col-12 col-form-label text-light" %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control shadow rounded col-12 mb-3",placeholder: "Imię" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nazwisko, class: "col-12 col-form-label text-light" %><br />
+    <%= f.text_field :surname, autofocus: true, autocomplete: "surname",class:"form-control shadow rounded col-12 mb-3",placeholder: "Nazwisko" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "col-12 col-form-label text-light" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control shadow rounded col-12 mb-3",placeholder: "Email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :numer_kontaktowy, class: "col-12 col-form-label text-light" %><br />
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone",class:"form-control shadow rounded col-12 mb-3",placeholder: "Numer telefonu" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hasło, class: "col-12 col-form-label text-light" %>
+    <% if @minimum_password_length %>
+    <em>(Minimum <%= @minimum_password_length %> znaków)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "current-password",class:"form-control shadow rounded col-12 mb-3",placeholder:"Nowe hasło" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :potwierdzenie_hasła,class: "col-12 col-form-label text-light" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control shadow rounded col-12 mb-3",placeholder:"Potwierdź hasło" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :klasa_wieku,class: "col-12 col-form-label text-light" %><br />
+    <%= f.select(:category, options_for_select(["Dorosła","Niepełnoletnia"]), {}, class:"form-control col-12 mb-3") %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Dodaj",class:'btn btn-outline-success' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>

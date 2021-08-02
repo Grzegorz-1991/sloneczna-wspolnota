@@ -12,12 +12,16 @@
             </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Mieszkańcy</li>
-                        <li class="list-group-item">Opłaty</li>
+                        <li class="list-group-item header-3-no-hover">Mieszkańcy:
+                            <% @appartment.user.each do |appart_user| %>
+                                <ul><%= link_to "#{appart_user.name} #{appart_user.surname}", user_path(appart_user.id),class: "list-appartmen" %></ul>
+                            <% end %>
+                        </li>
+                        <li class="list-group-item header-3-no-hover">Opłaty</li>
+
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

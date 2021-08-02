@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row row-all-view justify-content-center align-items-center">
+        <div class="col-10">
+            <div class="card">
+            <div class="row card-header ml-0 mr-0">
+                <div class="col">
+                    <h2 class="header-2"> <%=" #{@user.name} #{@user.surname}" %></h2>
+                </div>
+                <div class="col">
+                    <h2 class="header-2 test-right">
+                        <% if @user.appartment_id == nil %>
+                            <%= "Nieprzypisano" %>
+                        <% else %>
+                            <%= link_to "Blok #{@user.appartment.block_name},
+                        nr. #{@user.appartment.number_of_appart}", appartment_path(@user.appartment),class:"header-2-link" %>
+                        <% end %>
+                    </h2>
+                </div>
+            </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item header-3-no-hover">Dane kontaktowe:
+                            <ul><%="Adres email: #{@user.email}" %></ul>
+                            <ul><%="Numer kontaktowy: #{@user.phone_number.empty? ? "Niepodano" : @user.phone_number }" %></ul>
+                            <ul><%="Osoba: #{@user.category}" %></ul>
+                        </li>
+                        <li class="list-group-item header-3-no-hover">Opłaty</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
